@@ -6,6 +6,8 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
+def safeLog4jVersion = "2.24.3"
+
 repositories {
     maven { url "https://maven.terraformersmc.com/releases/" }
     maven { url "https://maven.isxander.dev/releases" }
@@ -23,6 +25,18 @@ dependencies {
     modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
     modApi "maven.modrinth:yacl:${project.yacl_version}"
     include "maven.modrinth:yacl:${project.yacl_version}"
+    
+	constraints {
+		implementation("org.apache.logging.log4j:log4j-api:${safeLog4jVersion}") {
+			because "Log4Shell-style JNDI issues were fixed in newer Log4j releases"
+		}
+		implementation("org.apache.logging.log4j:log4j-core:${safeLog4jVersion}") {
+			because "Log4Shell-style JNDI issues were fixed in newer Log4j releases"
+		}
+		implementation("org.apache.logging.log4j:log4j-slf4j2-impl:${safeLog4jVersion}") {
+			because "Log4Shell-style JNDI issues were fixed in newer Log4j releases"
+		}
+	}
 }
 
 processResources {
