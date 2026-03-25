@@ -32,7 +32,7 @@ public class VoidCollection {
     }
 
     public boolean add(ItemStack stack) {
-        if (stack == null || !stack.hasNbt()) return false;
+        if (stack == null || !Util.hasNbt(stack)) return false;
 
         isLocked = true;
         stack = stack.copyWithCount(1);
@@ -40,7 +40,7 @@ public class VoidCollection {
         ItemStack ignored = Util.removeNbt(removed, Config.getInstance().getIgnoreNbt());
         isLocked = false;
 
-        if (!ignored.hasNbt()) return false;
+        if (!Util.hasNbt(ignored)) return false;
         if (unique.contains(ignored)) return false;
 
         if (maxSize >= 0) {

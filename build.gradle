@@ -51,9 +51,11 @@ java {
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
-    archivesBaseName = project.archives_base_name
-
     withSourcesJar()
+}
+
+base {
+    archivesName = project.archives_base_name
 }
 
 loom {
@@ -62,7 +64,7 @@ loom {
 
 jar {
     from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}"}
+        rename { "${it}_${project.base.archivesName.get()}"}
     }
 }
 

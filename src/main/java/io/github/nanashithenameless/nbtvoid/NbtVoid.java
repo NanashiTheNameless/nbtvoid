@@ -1,9 +1,11 @@
 package io.github.nanashithenameless.nbtvoid;
 
+import io.github.nanashithenameless.nbtvoid.util.Util;
 import io.github.nanashithenameless.nbtvoid.util.VoidCollection;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -28,10 +30,10 @@ public class NbtVoid implements ClientModInitializer {
     public static final String MOD_ID = "nbtvoid";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static final VoidCollection VOID = new VoidCollection();
-    public static final ItemGroup VOID_GROUP = Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "void"), FabricItemGroup.builder()
+        public static final ItemGroup VOID_GROUP = Registry.register(Registries.ITEM_GROUP, Identifier.of(MOD_ID, "void"), FabricItemGroup.builder()
             .displayName(Text.translatable("itemGroup.nbtvoid.void"))
             .icon(Items.ENDER_CHEST::getDefaultStack)
-            .texture("item_search.png")
+            .texture(Identifier.of(MOD_ID, "item_search"))
             .type(ItemGroup.Type.SEARCH)
             .build()
     );
@@ -53,7 +55,18 @@ public class NbtVoid implements ClientModInitializer {
             if (stackNbt.contains("item", NbtElement.COMPOUND_TYPE)) {
                 stackNbt = stackNbt.getCompound("item");
             }
-            ItemStack stack = ItemStack.fromNbt(stackNbt);
+            if (!stackNbt.contains("id", NbtElement.STRING_TYPE)) continue;
+            Identifier id = Identifier.tryParse(stackNbt.getString("id"));
+            if (id == null) continue;
+
+            Item item = Registries.ITEM.get(id);
+            if (item == Items.AIR) continue;
+
+            int count = stackNbt.contains("Count", NbtElement.NUMBER_TYPE) ? Byte.toUnsignedInt(stackNbt.getByte("Count")) : 1;
+            ItemStack stack = new ItemStack(item, Math.max(1, count));
+            if (stackNbt.contains("tag", NbtElement.COMPOUND_TYPE)) {
+                Util.setNbt(stack, stackNbt.getCompound("tag").copy());
+            }
             if (stack != ItemStack.EMPTY) {
                 VOID.add(stack);
             }
@@ -68,8 +81,9 @@ public class NbtVoid implements ClientModInitializer {
             stackNbt.putString("id", Registries.ITEM.getId(stack.getItem()).toString());
             stackNbt.putByte("Count", (byte) stack.getCount());
             // check is kinda redundant
-            if (stack.hasNbt()) {
-                stackNbt.put("tag", stack.getNbt());
+            NbtCompound customData = Util.getNbt(stack);
+            if (customData != null) {
+                stackNbt.put("tag", customData);
             }
             entries.add(stackNbt);
         }
