@@ -53,7 +53,16 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build for CodeQL
-        run: ./gradlew build --no-daemon
+        run: |
+          ./gradlew \
+            clean \
+            classes \
+            --no-daemon \
+            --no-build-cache \
+            --rerun-tasks \
+            -Dorg.gradle.caching=false \
+            -Dorg.gradle.parallel=false \
+            -Dorg.gradle.jvmargs=
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
