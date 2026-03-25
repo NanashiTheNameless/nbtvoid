@@ -1,8 +1,8 @@
-package me.white.nbtvoid.mixin;
+package io.github.nanashithenameless.nbtvoid.mixin;
 
-import me.white.nbtvoid.Config;
-import me.white.nbtvoid.NbtVoid;
-import me.white.nbtvoid.util.SearchProvider;
+import io.github.nanashithenameless.nbtvoid.Config;
+import io.github.nanashithenameless.nbtvoid.NbtVoid;
+import io.github.nanashithenameless.nbtvoid.util.SearchProvider;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.Inject;

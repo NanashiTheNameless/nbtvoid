@@ -1,11 +1,11 @@
-package me.white.nbtvoid.util;
+package io.github.nanashithenameless.nbtvoid.util;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import com.mojang.brigadier.StringReader;
-import me.white.nbtvoid.Config;
+import io.github.nanashithenameless.nbtvoid.Config;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.command.argument.NbtPathArgumentType;
 import net.minecraft.command.argument.NbtPathArgumentType.NbtPath;
@@ -60,7 +60,7 @@ public class SearchProvider {
     private static boolean matchesName(ItemStack stack, String query) {
         query = query.toLowerCase(Locale.ROOT);
         if (Config.getInstance().getDoCheckTooltip()) {
-            for (Text tooltip : stack.getTooltip(null, TooltipContext.Default.BASIC.withCreative())) {
+            for (Text tooltip : stack.getTooltip(null, TooltipContext.BASIC)) {
                 if (tooltip.getString().toLowerCase(Locale.ROOT).contains(query)) return true;
             }
         } else {

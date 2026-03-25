@@ -1,15 +1,16 @@
 {
   "schemaVersion": 1,
-  "id": "nbtvoid",
+  "id": "nbtvoid-nanashi-fork",
   "version": "${version}",
-  "name": "NBT Void",
+  "name": "NBT Void-Nanashi-FORK",
   "description": "Saves every item with NBT",
   "authors": [
+    "NanashiTheNameless",
     "White_145"
   ],
   "contact": {
-    "website": "https://modrinth.com/mod/nbt-void",
-    "repo": "https://github.com/White_145/nbtvoid"
+    "website": "https://github.com/NanashiTheNameless/nbtvoid",
+    "repo": "https://github.com/NanashiTheNameless/nbtvoid"
   },
   "license": "MIT",
   "icon": "assets/nbtvoid/icon.png",
@@ -17,10 +18,10 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "me.white.nbtvoid.NbtVoid"
+      "io.github.nanashithenameless.nbtvoid.NbtVoid"
     ],
     "modmenu": [
-      "me.white.nbtvoid.integration.ModMenu"
+      "io.github.nanashithenameless.nbtvoid.integration.ModMenu"
     ]
   },
   "mixins": [

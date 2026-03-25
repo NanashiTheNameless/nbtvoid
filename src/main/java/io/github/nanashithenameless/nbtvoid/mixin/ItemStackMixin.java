@@ -1,6 +1,6 @@
-package me.white.nbtvoid.mixin;
+package io.github.nanashithenameless.nbtvoid.mixin;
 
-import me.white.nbtvoid.NbtVoid;
+import io.github.nanashithenameless.nbtvoid.NbtVoid;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,4 +1,4 @@
-package me.white.nbtvoid.integration;
+package io.github.nanashithenameless.nbtvoid.integration;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
@@ -14,10 +14,10 @@ import dev.isxander.yacl3.api.controller.BooleanControllerBuilder;
 import dev.isxander.yacl3.api.controller.EnumControllerBuilder;
 import dev.isxander.yacl3.api.controller.IntegerFieldControllerBuilder;
 import dev.isxander.yacl3.api.controller.StringControllerBuilder;
-import me.white.nbtvoid.Config;
-import me.white.nbtvoid.Config.CheckType;
-import me.white.nbtvoid.Config.SortType;
-import me.white.nbtvoid.NbtVoid;
+import io.github.nanashithenameless.nbtvoid.Config;
+import io.github.nanashithenameless.nbtvoid.Config.CheckType;
+import io.github.nanashithenameless.nbtvoid.Config.SortType;
+import io.github.nanashithenameless.nbtvoid.NbtVoid;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 

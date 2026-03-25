@@ -1,6 +1,6 @@
-package me.white.nbtvoid;
+package io.github.nanashithenameless.nbtvoid;
 
-import me.white.nbtvoid.util.VoidCollection;
+import io.github.nanashithenameless.nbtvoid.util.VoidCollection;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.loader.api.FabricLoader;

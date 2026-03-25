@@ -1,4 +1,4 @@
-package me.white.nbtvoid.util;
+package io.github.nanashithenameless.nbtvoid.util;
 
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;

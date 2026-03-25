@@ -1,4 +1,4 @@
-package me.white.nbtvoid;
+package io.github.nanashithenameless.nbtvoid;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

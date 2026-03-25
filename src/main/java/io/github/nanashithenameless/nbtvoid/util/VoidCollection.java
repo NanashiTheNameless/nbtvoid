@@ -1,6 +1,6 @@
-package me.white.nbtvoid.util;
+package io.github.nanashithenameless.nbtvoid.util;
 
-import me.white.nbtvoid.Config;
+import io.github.nanashithenameless.nbtvoid.Config;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemStackSet;
 
